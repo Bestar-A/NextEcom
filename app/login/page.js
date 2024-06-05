@@ -44,7 +44,7 @@ export default function Register() {
                                 className="form-control mb-4" placeholder="Enter your password"/>
                             <button type="submit" className="btn btn-primary btn-raised"
                                 disabled={loading || !email || !password}>
-                                    {loading ? "Please wait..." : 'Register'}
+                                    {loading ? "Please wait..." : 'Login'}
                             </button>
                         </form>
                     </div>
