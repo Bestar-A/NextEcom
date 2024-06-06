@@ -1,7 +1,7 @@
-import CredentialsProvider from 'next-auth/providers/credentials'
 import connectDB from './connectDB'
-import { User } from '@/models/user';
+import User from '@/models/user';
 import bcrypt from 'bcrypt'
+import CredentialsProvider from 'next-auth/providers/credentials';
 
 export const authOptions = {
     session: {
@@ -9,7 +9,7 @@ export const authOptions = {
     },
     providers: [
         CredentialsProvider({
-            async authorize(credentials, req) {
+            async authorize(credentials) {
                 await connectDB();
                 const { email, password } = credentials;
                 const user = await User.findOne({email});
@@ -26,6 +26,6 @@ export const authOptions = {
     ],
     secret: process.env.NEXTAUTH_SECRET,
     pages: {
-        signIn: '/login'
+        signIn: '/login',
     }
 }
